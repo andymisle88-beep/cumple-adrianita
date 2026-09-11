@@ -1,0 +1,467 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Una sorpresa</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           FONDO
+        ========================= */
+
+        .fondo {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: -1;
+
+            background:
+                radial-gradient(circle at center, #292929 0%, #101010 55%, #050505 100%);
+        }
+
+
+        /* =========================
+           BANDERAS DEL PERÚ
+        ========================= */
+
+        .bandera {
+            position: absolute;
+
+            width: 95px;
+            height: 60px;
+
+            background: linear-gradient(
+                to right,
+                #d91023 0%,
+                #d91023 33%,
+                white 33%,
+                white 66%,
+                #d91023 66%,
+                #d91023 100%
+            );
+
+            border-radius: 4px;
+
+            opacity: 0.12;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+
+            animation: flotar 8s ease-in-out infinite;
+        }
+
+
+        .bandera:nth-child(1) {
+            top: 8%;
+            left: 5%;
+            transform: rotate(-12deg);
+            animation-delay: 0s;
+        }
+
+        .bandera:nth-child(2) {
+            top: 20%;
+            right: 5%;
+            transform: rotate(13deg);
+            animation-delay: 2s;
+        }
+
+        .bandera:nth-child(3) {
+            bottom: 12%;
+            left: 8%;
+            transform: rotate(10deg);
+            animation-delay: 4s;
+        }
+
+        .bandera:nth-child(4) {
+            bottom: 18%;
+            right: 8%;
+            transform: rotate(-10deg);
+            animation-delay: 1s;
+        }
+
+        .bandera:nth-child(5) {
+            top: 48%;
+            left: -20px;
+            transform: rotate(-7deg);
+            animation-delay: 3s;
+        }
+
+        .bandera:nth-child(6) {
+            top: 55%;
+            right: -20px;
+            transform: rotate(8deg);
+            animation-delay: 5s;
+        }
+
+
+        @keyframes flotar {
+
+            0%, 100% {
+                margin-top: 0;
+            }
+
+            50% {
+                margin-top: -15px;
+            }
+
+        }
+
+
+        /* =========================
+           CONTENEDOR
+        ========================= */
+
+        .contenedor {
+            width: 92%;
+            max-width: 650px;
+            padding: 20px;
+        }
+
+
+        /* =========================
+           TARJETA
+        ========================= */
+
+        .tarjeta {
+            background: rgba(20, 20, 20, 0.88);
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            border-radius: 25px;
+
+            padding: 40px;
+
+            text-align: center;
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,0.65),
+                0 0 40px rgba(217,16,35,0.08);
+
+            backdrop-filter: blur(12px);
+
+            animation: aparecer 0.8s ease;
+        }
+
+
+        @keyframes aparecer {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+        }
+
+
+        /* =========================
+           TITULO
+        ========================= */
+
+        h1 {
+            font-size: 36px;
+            margin: 0 0 15px 0;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+
+        .subtitulo {
+            color: #bdbdbd;
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+
+        /* =========================
+           BOTÓN
+        ========================= */
+
+        button {
+            border: none;
+
+            padding: 15px 38px;
+
+            border-radius: 50px;
+
+            background: linear-gradient(
+                135deg,
+                #ffffff,
+                #dddddd
+            );
+
+            color: #111;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+        }
+
+
+        button:hover {
+            transform: translateY(-3px) scale(1.03);
+
+            box-shadow:
+                0 12px 30px rgba(0,0,0,0.5);
+        }
+
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+
+        /* =========================
+           IMAGEN
+        ========================= */
+
+        .foto {
+            width: 100%;
+            max-width: 540px;
+
+            height: auto;
+
+            display: block;
+
+            margin: 0 auto;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.6);
+
+            border: 1px solid rgba(255,255,255,0.15);
+
+            animation: fotoAparecer 0.8s ease;
+        }
+
+
+        @keyframes fotoAparecer {
+
+            from {
+                opacity: 0;
+                transform: scale(0.94);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+
+        /* =========================
+           OCULTO
+        ========================= */
+
+        .oculto {
+            display: none;
+        }
+
+
+        /* =========================
+           PARTE INFERIOR
+        ========================= */
+
+        .texto-final {
+            margin-top: 25px;
+
+            color: #bdbdbd;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           MÓVIL
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .tarjeta {
+                padding: 28px 20px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 29px;
+            }
+
+            .subtitulo {
+                font-size: 15px;
+            }
+
+            .bandera {
+                width: 70px;
+                height: 44px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         FONDO
+    ========================= -->
+
+    <div class="fondo">
+
+        <div class="bandera"></div>
+        <div class="bandera"></div>
+        <div class="bandera"></div>
+        <div class="bandera"></div>
+        <div class="bandera"></div>
+        <div class="bandera"></div>
+
+    </div>
+
+
+
+    <!-- =========================
+         CONTENIDO
+    ========================= -->
+
+    <div class="contenedor">
+
+
+        <!-- PANTALLA INICIAL -->
+
+        <div id="inicio" class="tarjeta">
+
+            <h1>
+                Tienes una sorpresa
+            </h1>
+
+            <div class="subtitulo">
+                Hay algo preparado para ti.
+            </div>
+
+            <button onclick="comenzar()">
+                COMENZAR
+            </button>
+
+        </div>
+
+
+
+        <!-- PANTALLA DE LA FOTO -->
+
+        <div id="sorpresa" class="tarjeta oculto">
+
+            <img
+                src="imagenes/regalo.jpg"
+                alt="Imagen de cumpleaños"
+                class="foto"
+            >
+
+            <div class="texto-final">
+                Espero que tengas un muy buen cumpleaños.
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         CANCIÓN
+    ========================= -->
+
+    <audio
+        id="cancion"
+        src="cancion.mp3"
+        preload="auto">
+    </audio>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        function comenzar() {
+
+            const inicio =
+                document.getElementById("inicio");
+
+            const sorpresa =
+                document.getElementById("sorpresa");
+
+            const cancion =
+                document.getElementById("cancion");
+
+
+            // Ocultar inicio
+            inicio.classList.add("oculto");
+
+
+            // Mostrar sorpresa
+            sorpresa.classList.remove("oculto");
+
+
+            // Reproducir canción
+            cancion.play().catch(function(error) {
+
+                console.log(
+                    "No se pudo reproducir la canción:",
+                    error
+                );
+
+            });
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
+```
